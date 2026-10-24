@@ -51,4 +51,13 @@ void desempeno_segunNota_retornaCategoria(double nota, String esperado) {
 assertEquals(esperado, calculadora.desempeno(nota));
 }
 
+@ParameterizedTest
+@ValueSource(doubles = {-0.1, 5.1, 10.0})
+@DisplayName("Rechaza notas fuera del rango 0.0 – 5.0")
+void calcularNotaFinal_notaFueraDeRango_lanzaExcepcion(double notaInvalida) {
+IllegalArgumentException ex = assertThrows(IllegalArgumentException.class,
+() -> calculadora.calcularNotaFinal(notaInvalida, 3.0, 3.0));
+assertTrue(ex.getMessage().contains("entre 0.0 y 5.0"));
+}
+
 }
