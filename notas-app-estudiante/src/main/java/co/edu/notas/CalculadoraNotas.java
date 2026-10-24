@@ -18,7 +18,7 @@ public class CalculadoraNotas {
     /** Aprueba quien obtiene 3.0 o más. */
     public boolean estaAprobado(double notaFinal) {
         validarNota(notaFinal);
-        return notaFinal > NOTA_APROBATORIA;
+        return notaFinal >= NOTA_APROBATORIA;
     }
 
     /** Escala de desempeño: Superior, Alto, Básico, Bajo. */
@@ -30,9 +30,13 @@ public class CalculadoraNotas {
         return "Bajo";
     }
 
+    
+
     private void validarNota(double nota) {
         if (nota < NOTA_MINIMA || nota > NOTA_MAXIMA) {
             throw new IllegalArgumentException("La nota debe estar entre 0.0 y 5.0: " + nota);
         }
     }
+
+    
 }
